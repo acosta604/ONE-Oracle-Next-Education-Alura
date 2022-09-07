@@ -1,0 +1,82 @@
+<meta charset="UTF-8">
+
+<h1>PROGRAMA SORTEO</h1>
+
+<script>
+
+    function saltarLinea() {
+        document.write("<br><br><br>");     
+    }  
+
+    function imprimir(frase) {
+        document.write(frase);
+        saltarLinea();
+    }
+
+
+//funcion para generar número aleatorio
+
+    function sorteo(n){
+        return Math.round(Math.random()*n);
+
+    }
+
+    var numeroPensado = sorteo(10);
+
+    var numeroLanzado; 
+
+
+//ciclo FOR que se repite mientras el número de intentos sea menor o igual a 3 
+
+ for (var intento=1;intento<=3;intento ++) {
+
+
+    numeroLanzado=parseInt(prompt("Ingrese un número del 0 al 10 "));
+
+
+
+    if (numeroPensado == numeroLanzado){
+
+        alert("GANASTE");
+        break;
+
+       }else{
+
+            if (numeroLanzado < numeroPensado ) {
+
+              alert("FALLASTE, EL NÚMERO LANZADO ES MENOR");
+
+            }else{
+
+              alert(" FALLASTE, EL NÚMERO LANZADO ES MAYOR");
+
+              }
+
+        // condicional IF que muestra al usuario el número de intentos que lleva, siempre y cuando el número de intentos no se hayan superado
+
+           if (intento!=3){
+
+                alert("llEVAS "+ (intento)+ " INTENTO");
+
+
+        // este bloque de codigo solo se ejecuta cuando el usuario ya no tiene más intentos.
+        // muestra el número correcto que se generó aleatoriamente
+
+           }else if(intento == 3){
+
+                alert("UPS! YA NO TIENES MAS INTENTOS EL NÚMERO CORRECTO ES: "+numeroPensado);
+
+               }
+
+
+
+
+        }
+
+
+
+ }
+
+
+
+</script>

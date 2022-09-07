@@ -1,0 +1,46 @@
+<canvas width="600" height="400"> </canvas>
+
+
+<script >
+
+
+	function dibujarCuadradoAzul(x,y,color){
+
+
+
+		var pantalla =document.querySelector ("canvas");
+		var pincel = pantalla.getContext ("2d");
+
+		pincel.fillStyle=color;
+		pincel.fillRect (x,y,50,50);
+		pincel.strokeStyle ="black"
+		pincel.strokeRect (x,y,50,50)
+
+}
+
+
+var x=0 
+
+while( x< 600){
+
+  	dibujarCuadradoAzul(x,0,"red");
+	dibujarCuadradoAzul(x,50,"yellow");
+	dibujarCuadradoAzul(x,100,"green");
+
+
+
+	x=x+50;
+}
+
+	
+/*for(var x=0;x <600; x=x+50){
+dibujarCuadradoAzul(x,0,"red");
+dibujarCuadradoAzul(x,50,"yellow");
+dibujarCuadradoAzul(x,100,"green");
+
+}
+
+*/
+
+
+</script>

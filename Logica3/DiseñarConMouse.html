@@ -1,0 +1,141 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+  
+var pantalla = document.querySelector('canvas');
+    var pincel = pantalla.getContext('2d');
+
+      
+pincel.fillStyle="grey";
+pincel.fillRect (0,0,600,400);
+
+
+var CuadroR= 0;
+var CuadroV=50;
+var CuadroA=100;
+var nuevocolor= "blue";
+//var tamaño=50;
+
+function dibujarCuadrado ( x, y, color){
+
+ pincel.fillStyle = color;
+ pincel.fillRect(x,y, 50, 50);
+
+}
+
+
+var puedoDibujar = false;
+
+function dibujarCirculo(x,y,nuevocolor) {
+
+        if(puedoDibujar) {
+    
+            pincel.fillStyle = nuevocolor;
+            pincel.beginPath();
+            pincel.arc(x, y, 5, 0, 2 * 3.14);
+            pincel.fill();
+        }
+
+ }
+
+function habilitarDibujar() {
+
+        puedoDibujar = true;
+}
+
+function deshabilitarDibujar() {
+
+        puedoDibujar = false;
+}
+
+
+
+function restriccion(xCoordenada,yCoordenada){
+
+
+    if ((xCoordenada >= 0 && xCoordenada < (3*50+5)) &&  (yCoordenada >=0 && yCoordenada < (50+5))) {
+
+            return false;
+
+    } else{
+
+            return true;
+
+        }
+}   
+
+
+function moverMouse(evento){
+
+    var x = evento.pageX - pantalla.offsetLeft;
+    var y = evento.pageY - pantalla.offsetTop;
+
+    if (restriccion(x,y)){
+
+         dibujarCirculo(x,y, nuevocolor);
+        }
+}
+
+
+ 
+function paleta(){
+
+
+    dibujarCuadrado(CuadroR,0,"red");
+    dibujarCuadrado(CuadroV,0,"green");
+    dibujarCuadrado(CuadroA,0,"blue");
+
+
+
+}
+
+
+
+
+function cambioColor(evento){
+    
+     var x = evento.pageX - pantalla.offsetLeft;
+     var y = evento.pageY - pantalla.offsetTop;
+
+        if (y > CuadroR && y < (CuadroR + 50)) {
+          
+          if(x > CuadroR && x < (CuadroR +50 )) {
+
+                nuevocolor = "red";
+              
+           }  else if  (x > CuadroV && x<( CuadroV +50)) {
+
+                nuevocolor = "green";
+
+           } else if (x >CuadroA && x < (CuadroA+50)) { 
+                
+                nuevocolor = "blue";
+
+           }            
+
+             console.log(nuevocolor);
+        }
+}
+
+pantalla.onmousemove = moverMouse;
+pantalla.onmousedown = habilitarDibujar;
+pantalla.onmouseup = deshabilitarDibujar;
+
+paleta();
+
+pantalla.onclick = cambioColor;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,40 @@
+<meta charset="UTF-8">
+
+<h1>Recetas de Armando</h1>
+
+<script>
+
+    var ingredientes = [];// nombres de ingredientes a
+    var cantidad = parseInt(prompt("¿Cuántos ingredientes vas a añadir?"));// numero de ingredientes 
+    var contador = 1; // inicia el conte para saber en que numero de ingrediente va.
+   
+
+    while( contador <= cantidad) { // mientras el contador de ingredientes sea menor  o igual al numero de ingredientes por agregar
+        var ingrediente = prompt("Informe el ingrediente " + contador); // ej: ingrediente 1 ingrediente 2
+        var existeIngrediente=false;// variable para determinar si un ingrediente existe o no.
+       
+       	for(var posicion=0;posicion< ingredientes.length;posicion++){ // ciclo for que recorre las posiciones del array
+
+
+        	if (ingredientes[posicion]==ingrediente){ //condicion para saber si el ingrediente a ingresar ya existe
+         	     existeIngrediente= true;// variable = true si el ingrediente ya existe.
+         		 alert ("ingrediente repetido: "+" ( " +ingrediente + " ) "+ " por favor ingrese un ingrediente diferente.");//imprime el mensaje con el ingrediente repetido
+                 break;
+
+            }
+        } 
+        
+           
+
+ 			if (existeIngrediente==false){ // condicion  cuando el ingrediente no existe
+ 
+   			 	ingredientes.push(ingrediente);// agrega los ingredientes al array
+
+   			 	contador++;
+          	}
+    }
+
+    console.log(ingredientes);
+
+</script>
+
